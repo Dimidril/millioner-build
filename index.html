@@ -105,7 +105,16 @@
           bridge.subscribe((e) => console.log("vkBridge event", e));
           bridge.send("VKWebAppInit", {});
       }
+      function showBanner(){
+        const bridge = vkBridge.default;
+        bridge.send("VKWebAppShowBannerAd", {
+            banner_location: 'bottom',
+            can_close: "false"
+        });
+    }
+
     initBridge();
+    showBanner();
       function showAd(adFormat, waterfall){
 
           const bridge = vkBridge.default;
