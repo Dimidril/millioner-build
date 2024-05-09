@@ -106,10 +106,6 @@
         bridge.send("VKWebAppShowBannerAd", {
             banner_location: 'bottom',
             can_close: "false"
-        }).then(data => {
-            if(!data.result){
-                showBanner()
-            }
         });
     }
 
