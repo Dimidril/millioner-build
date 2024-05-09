@@ -99,13 +99,8 @@
       });
     };
     document.body.appendChild(script);
-	
-    function initBridge() {
-          const bridge = vkBridge.default;
-          bridge.subscribe((e) => console.log("vkBridge event", e));
-          bridge.send("VKWebAppInit", {});
-      }
-      function showBanner(){
+    
+    function showBanner(){
         const bridge = vkBridge.default;
         bridge.send("VKWebAppShowBannerAd", {
             banner_location: 'bottom',
@@ -113,8 +108,18 @@
         });
     }
 
+    function initBridge() {
+          const bridge = vkBridge.default;
+          bridge.subscribe((e) => console.log("vkBridge event", e));
+          bridge.send("VKWebAppInit", {}).then(data => {
+            if(data.result){
+              showBanner();
+            }
+          });
+      }
+      
     initBridge();
-    showBanner();
+
       function showAd(adFormat, waterfall){
 
           const bridge = vkBridge.default;
