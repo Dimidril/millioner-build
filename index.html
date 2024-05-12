@@ -106,7 +106,8 @@
         bridge.send("VKWebAppShowBannerAd", {
             banner_location: 'bottom',
             can_close: "false"
-        });
+        }).then(data => console.log(data))
+            .catch(data => console.log(data));
     }
     
     function hideBanner(){
