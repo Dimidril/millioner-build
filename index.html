@@ -108,22 +108,15 @@
             can_close: "false"
         });
     }
+    
+    function hideBanner(){
+        const bridge = vkBridge.default;
+        bridge.send("VKWebAppHideBannerAd", {});
+    }
 
     function initBridge() {
         const bridge = vkBridge.default;
-        bridge.subscribe((e) => {
-            console.log("vkBridge event", e)
-
-            if (e.detail.type === 'VKWebAppBannerAdUpdated') {
-                console.log("vkBridge banner event", e.detail);
-                showBanner();
-            }
-        });
-        bridge.send("VKWebAppInit", {}).then(data => {
-            if(data.result){
-                showBanner();
-            }
-        });
+        bridge.send("VKWebAppInit", {});
     }
 
     initBridge();
