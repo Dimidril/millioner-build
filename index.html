@@ -124,10 +124,11 @@
 
     function showAd(adFormat, waterfall) {
 
-        console.log(adFormat, waterfall);
-
         const bridge = vkBridge.default;
-        bridge.send("VKWebAppShowNativeAds", {ad_format: adFormat, use_waterfall: waterfall});
+        //bridge.send("VKWebAppShowNativeAds", {ad_format: adFormat, use_waterfall: waterfall});
+        bridge.send("VKWebAppShowNativeAds", {
+            ad_format: 'interstitial' /* Тип рекламы */
+        })
         bridge.subscribe((e) => {
             if (e.detail.type == 'VKWebAppShowNativeAdsResult' && e.detail.data.result == true) {
                 ss.SendMessage('VkBridge', 'ShowAdsResult', 'good');
