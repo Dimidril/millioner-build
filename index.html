@@ -131,6 +131,7 @@
                 ss.SendMessage('VkBridge', 'ShowAdsResult', 'good');
             }
             if (e.detail.type == 'VKWebAppShowNativeAdsFailed') {
+                console.log(e.detail.data)
                 ss.SendMessage('VkBridge', 'ShowAdsResult', 'noGood');
             }
         });
