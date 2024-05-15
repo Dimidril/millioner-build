@@ -124,6 +124,8 @@
 
     function showAd(adFormat, waterfall) {
 
+        console.log(adFormat, waterfall);
+
         const bridge = vkBridge.default;
         bridge.send("VKWebAppShowNativeAds", {ad_format: adFormat, use_waterfall: waterfall});
         bridge.subscribe((e) => {
